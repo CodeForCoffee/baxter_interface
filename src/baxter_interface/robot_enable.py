@@ -94,7 +94,7 @@ class RobotEnable(object):
 
     def _toggle_enabled(self, status):
 
-        pub = rospy.Publisher('robot/set_super_enable', Bool, 
+        pub = rospy.Publisher('robot/set_super_enable', Bool,
                               queue_size=10)
 
         baxter_dataflow.wait_for(
@@ -164,7 +164,7 @@ http://sdk.rethinkrobotics.com/wiki/RSDK_Shell#Initialize
                 timeout_msg=error_env,
                 body=pub.publish
             )
-        except OSError, e:
+        except OSError as e:
             if e.errno == errno.ETIMEDOUT:
                 if self._state.error == True and self._state.stopped == False:
                     rospy.logwarn(error_nonfatal)
